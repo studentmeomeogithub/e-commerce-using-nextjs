@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -37,35 +37,42 @@ export default function TestimonialsSlider() {
     return () => clearInterval(slideInterval);
   }, []);
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number): void => {
     setCurrentSlide(index);
   };
 
   return (
     <section className="bg-gray-100 py-16">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">What Our Customers Say</h2>
-        
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          What Our Customers Say
+        </h2>
+
         <div className="relative overflow-hidden">
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="w-full flex-shrink-0 flex justify-center">
+              <div
+                key={testimonial.id}
+                className="w-full flex-shrink-0 flex justify-center"
+              >
                 <div className="bg-white shadow-lg rounded-lg p-6 mx-4 max-w-md text-center flex flex-col items-center">
                   {/* Testimonial Image */}
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
-                    width={96}  // 96px wide (24 * 4)
+                    width={96} // 96px wide (24 * 4)
                     height={96} // 96px tall
                     className="rounded-full object-cover mb-4"
                   />
                   {/* Quote */}
-                  <p className="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
+                  <p className="text-gray-600 mb-4 italic">{testimonial.quote}</p>
                   {/* Name and Title */}
-                  <div className="font-semibold text-gray-800">{testimonial.name}</div>
+                  <div className="font-semibold text-gray-800">
+                    {testimonial.name}
+                  </div>
                   <div className="text-sm text-gray-500">{testimonial.title}</div>
                 </div>
               </div>
@@ -78,7 +85,7 @@ export default function TestimonialsSlider() {
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full ${
-                  index === currentSlide ? 'bg-gray-800' : 'bg-gray-400'
+                  index === currentSlide ? "bg-gray-800" : "bg-gray-400"
                 }`}
                 onClick={() => goToSlide(index)}
               ></button>
